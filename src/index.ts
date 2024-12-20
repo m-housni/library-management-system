@@ -1,10 +1,10 @@
-import { BookService } from './services/BookService.js';
-import { UserService } from './services/UserService.js';
+import { BookService } from './services/index.js';
+import { UserService } from './services/index.js';
 import { Book } from './models/Book.js';
 import { User } from './models/User.js';
-import log from './utils/Logger.js';
+import {log1, log3 } from './utils/index.js';
 
-const bookService = new BookService(log);
+const bookService = new BookService(log1);
 const userService = new UserService(bookService);
 
 // Add books
@@ -23,5 +23,5 @@ userService.addUser(user2);
 userService.borrowBook('1', '1');
 
 // List books to check availability
-log('Available books:');
+log3('Available books:');
 console.log(bookService.listBooks());

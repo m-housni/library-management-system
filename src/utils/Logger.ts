@@ -1,4 +1,4 @@
-export default function log1(message: string): void {
+export function log1(message: string): void {
     const timestamp = new Date().toISOString();
     console.log(`*** [${timestamp}] ${message}`);
 }

@@ -1,7 +1,7 @@
-import { BookService } from './services/BookService.js';
-import { UserService } from './services/UserService.js';
-import log from './utils/Logger.js';
-const bookService = new BookService(log);
+import { BookService } from './services/index.js';
+import { UserService } from './services/index.js';
+import { log1, log3 } from './utils/index.js';
+const bookService = new BookService(log1);
 const userService = new UserService(bookService);
 // Add books
 const book1 = { id: '1', title: '1984', author: 'George Orwell', isAvailable: true };
@@ -16,5 +16,5 @@ userService.addUser(user2);
 // User borrows a book
 userService.borrowBook('1', '1');
 // List books to check availability
-log('Available books:');
+log3('Available books:');
 console.log(bookService.listBooks());
