@@ -1,10 +1,11 @@
 export class BookService {
-    constructor() {
+    constructor(log = () => console.log("//////")) {
         this.books = [];
+        this.log = log;
     }
     addBook(book) {
         this.books.push(book);
-        console.log(`Book "${book.title}" added successfully.`);
+        this.log(`Book "${book.title}" added successfully.`);
     }
     listBooks() {
         return this.books;
@@ -13,10 +14,10 @@ export class BookService {
         const book = this.books.find(b => b.id === bookId && b.isAvailable);
         if (book) {
             book.isAvailable = false;
-            console.log(`Book "${book.title}" borrowed.`);
+            this.log(`Book "${book.title}" borrowed.`);
             return true;
         }
-        console.log(`Book with ID "${bookId}" is not available.`);
+        this.log(`Book with ID "${bookId}" is not available.`);
         return false;
     }
 }

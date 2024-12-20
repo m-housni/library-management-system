@@ -1,7 +1,7 @@
 import { BookService } from './services/BookService.js';
 import { UserService } from './services/UserService.js';
-import { log } from './utils/Logger.js';
-const bookService = new BookService();
+import log from './utils/Logger.js';
+const bookService = new BookService(log);
 const userService = new UserService(bookService);
 // Add books
 const book1 = { id: '1', title: '1984', author: 'George Orwell', isAvailable: true };
