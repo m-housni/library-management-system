@@ -1,8 +1,8 @@
-import { BookService } from './services/BookService';
-import { UserService } from './services/UserService';
-import { Book } from './models/Book';
-import { User } from './models/User';
-import { log } from './utils/Logger';
+import { BookService } from './services/BookService.js';
+import { UserService } from './services/UserService.js';
+import { Book } from './models/Book.js';
+import { User } from './models/User.js';
+import { log } from './utils/Logger.js';
 
 const bookService = new BookService();
 const userService = new UserService(bookService);
