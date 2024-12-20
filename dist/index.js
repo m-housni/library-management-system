@@ -1,20 +1,21 @@
-import { BookService } from './services/index.js';
-import { UserService } from './services/index.js';
-import { log1, log3 } from './utils/index.js';
-const bookService = new BookService(log1);
-const userService = new UserService(bookService);
-// Add books
-const book1 = { id: '1', title: '1984', author: 'George Orwell', isAvailable: true };
-const book2 = { id: '2', title: 'Brave New World', author: 'Aldous Huxley', isAvailable: true };
-bookService.addBook(book1);
-bookService.addBook(book2);
-// Add users
-const user1 = { id: '1', name: 'Alice', borrowedBooks: [] };
-const user2 = { id: '2', name: 'Bob', borrowedBooks: [] };
-userService.addUser(user1);
-userService.addUser(user2);
-// User borrows a book
-userService.borrowBook('1', '1');
-// List books to check availability
-log3('Available books:');
-console.log(bookService.listBooks());
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+function dynamicBookService() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { BookService } = yield import('./services/index.js');
+        const { log1 } = yield import('./utils/index.js');
+        const log = log1;
+        const bookService = new BookService(log);
+        bookService.addBook({ id: '1', title: '1984', author: 'George Orwell', isAvailable: true });
+        bookService.listBooks();
+    });
+}
+dynamicBookService();
