@@ -1,6 +1,9 @@
-import { ServiceFactory } from './factories/ServiceFactory.js';
+import { Database } from './utils/Database.js';
 
-const bookService = ServiceFactory.createBookService();
-bookService.addBook({ id: '1', title: '1984', author: 'George Orwell', isAvailable: true });
-bookService.borrowBook("2")
-bookService.listBooks();
+const db1 = Database.getInstance();
+db1.query('SELECT * FROM books');
+
+const db2 = Database.getInstance();
+console.log(db1, db2);
+console.log(db1 === db2); // true
+
